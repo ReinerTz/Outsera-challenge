@@ -6,15 +6,14 @@ describe("Producers Award Intervals", () => {
   let server;
 
   beforeAll(async () => {
-    const result = await startServer(3001); // Obtemos ambas instâncias: `app` e `server`
-    app = result.app; // Instância do Express
-    server = result.server; // Servidor HTTP
+    const result = await startServer(3001);
+    app = result.app;
+    server = result.server;
   });
 
   afterAll(async () => {
     await new Promise((resolve, reject) => {
       server.close((err) => {
-        // Fechamos o servidor HTTP aqui
         if (err) return reject(err);
         resolve();
       });

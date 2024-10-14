@@ -26,10 +26,10 @@ const parseCsv = () => {
         result.push(data);
       })
       .on("end", () => {
-        resolve(result); // Resolve a promessa com o array completo
+        resolve(result);
       })
       .on("error", (error) => {
-        reject(error); // Rejeita a promessa se houver um erro
+        reject(error);
       });
   });
 };
