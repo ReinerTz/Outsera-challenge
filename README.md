@@ -2,6 +2,45 @@
 
 Este é um projeto que processa uma lista de filmes (`./src/data/movielist.csv`) e gera informações sobre intervalos de prêmios para produtores, exibindo os produtores que ganharam mais de uma vez. A aplicação utiliza Node.js, Express e Sequelize com integração a um banco de dados.
 
+## Estrutura do Projeto
+
+### Abordagem Implementada: Entidade Única (Movie)
+
+Nesta implementação, foi criada uma única entidade `Movie`, que armazena todas as informações relevantes sobre os filmes. Os endpoints da API são projetados para interagir diretamente com essa entidade.
+
+- **Entidade**: `Movie`
+  - **Atributos**:
+    - `title`: **STRING** - O título do filme.
+    - `producers`: **STRING** - Os produtores do filme.
+    - `studios`: **STRING** - Os estúdios envolvidos na produção do filme.
+    - `year`: **INTEGER** - O ano em que o filme foi lançado.
+    - `winner`: **BOOLEAN** - Indica se o filme ganhou um prêmio.
+
+- **Vantagens**:
+  - **Simplicidade**: Uma única entidade facilita a compreensão do modelo de dados.
+  - **Facilidade de Manutenção**: Com menos entidades, o código é mais fácil de manter e entender.
+
+- **Desvantagens**:
+  - **Escalabilidade**: À medida que mais funcionalidades são adicionadas, pode se tornar difícil gerenciar a lógica de negócios em uma única entidade.
+
+### Abordagem Alternativa: Múltiplas Entidades (Producer, Studio, etc.)
+
+Embora não tenha sido implementada, uma abordagem alternativa seria criar várias entidades, como `Producer`, `Studio` e `Movie`. Isso permite uma modelagem mais rica e uma estrutura mais flexível.
+
+- **Entidades Sugeridas**:
+  - `Movie`: Representa os filmes.
+  - `Producer`: Representa os produtores de filmes.
+  - `Studio`: Representa os estúdios que produzem filmes.
+
+- **Vantagens**:
+  - **Modularidade**: Cada entidade pode ser gerenciada de forma independente, facilitando a adição de novas funcionalidades.
+  - **Clareza**: As relações entre filmes, produtores e estúdios são mais explícitas, o que pode ajudar na compreensão dos dados.
+
+- **Desvantagens**:
+  - **Complexidade**: Mais entidades significam mais interações e complexidade na lógica de negócios.
+  - **Necessidade de Relacionamentos**: É necessário gerenciar como as entidades se relacionam entre si.
+
+
 ## Tecnologias Utilizadas
 
 - Node.js
